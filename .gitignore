@@ -2,3 +2,7 @@
 dist/
 .idea/
 .vscode/
+bin/
+.settings/
+.project
+.classpath
