@@ -21,7 +21,7 @@ hello-mod\build.bat                        # one mod
 ```
 
 Requirements: JDK 11+, the game JAR (`OPENVOXEL_GAME_JAR`, downloaded by the official launcher)
-and the loader JAR (`OPENVOXEL_MODLOADER_JAR`, defaults to `../ModLoader-Client/dist/ModLoader-v1.0.0-vgame-0.8.0-client.jar`).
+and the loader JAR (`OPENVOXEL_MODLOADER_JAR`, defaults to `../ModLoader-Client/dist/ModLoader-v1.0.0-vgame-0.0.8-client.jar`).
 When `../ModLoader-Client/instance/mods` exists the JARs are copied there too.
 
 ## Anatomy of a mod

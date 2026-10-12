@@ -10,7 +10,7 @@ if "%GAME%"=="" if exist "%ROOT%\..\..\..\Game\versions\0.0.8-Debug\openvoxel-0.
 if "%GAME%"=="" if exist "%ROOT%\..\ModLoader-Client\game\openvoxel.jar" set "GAME=%ROOT%\..\ModLoader-Client\game\openvoxel.jar"
 if "%GAME%"=="" ( echo Game JAR not found; set OPENVOXEL_GAME_JAR. & exit /b 1 )
 set "LOADER=%OPENVOXEL_MODLOADER_JAR%"
-if "%LOADER%"=="" set "LOADER=%ROOT%\..\ModLoader-Client\dist\ModLoader-v1.0.0-vgame-0.8.0-client.jar"
+if "%LOADER%"=="" set "LOADER=%ROOT%\..\ModLoader-Client\dist\ModLoader-v1.0.0-vgame-0.0.8-client.jar"
 if not exist "%LOADER%" ( echo Loader JAR not found; set OPENVOXEL_MODLOADER_JAR or build ..\ModLoader-Client. & exit /b 1 )
 if exist "%MOD%\build" rmdir /s /q "%MOD%\build"
 mkdir "%MOD%\build"
