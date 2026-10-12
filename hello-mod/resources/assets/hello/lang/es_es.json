@@ -1,0 +1,5 @@
+{
+  "hello.ready": "&a¡Hello Mod cargado! Escribe &e/hello &apara un saludo.",
+  "hello.greeting": "&b¡Hola, %s! Estás en modo &e%s&b.",
+  "hello.command": "saluda (mod de ejemplo)"
+}
