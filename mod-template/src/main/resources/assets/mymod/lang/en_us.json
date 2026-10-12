@@ -1,0 +1,4 @@
+{
+  "mymod.hello": "&aHello from My Mod, %s!",
+  "mymod.command": "greets you (My Mod)"
+}
