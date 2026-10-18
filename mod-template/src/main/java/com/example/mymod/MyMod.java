@@ -7,7 +7,7 @@ import com.happyuky7.openvoxelmoding.loader.ModContext;
 /** Template: native block, command, translation, recipe, persistent config and a per-frame hook. Copy and rename. */
 public final class MyMod implements ClientMod {
     private ModConfig config;
-    private int frames;
+    private long lastLog;
 
     @Override
     public void onLoad(ModContext ctx) {
@@ -33,7 +33,13 @@ public final class MyMod implements ClientMod {
             ctx.chat(ctx.translate("mymod.hello", name));
             ctx.playSound("pop");
         });
+        ctx.registerCommand("where", "show your coordinates", args -> {
+            if (!ctx.isInWorld()) return;
+            ctx.chat("&7You are at &e" + format(ctx.getPlayerPosition()));
+        });
     }
+
+    private static String format(org.joml.Vector3d p) { return String.format(java.util.Locale.ROOT, "%.1f, %.1f, %.1f", p.x, p.y, p.z); }
 
     @Override
     public void onGameReady(ModContext ctx) {
@@ -45,7 +51,12 @@ public final class MyMod implements ClientMod {
     @Override
     public void onFrame(ModContext ctx) {
         if (!ctx.isInWorld()) return;
-        if (++frames % 1200 == 0) ctx.chat("&7You are at " + ctx.getPlayerPosition()); // every ~20 s
+        // onFrame runs every rendered frame (hundreds per second): use time, never frame counts,
+        // and keep chat for things the player asked for. Here: write the position to the log once a minute.
+        long now = System.currentTimeMillis();
+        if (now - lastLog < 60_000) return;
+        lastLog = now;
+        ctx.log("Player at " + format(ctx.getPlayerPosition()));
     }
 
     @Override
