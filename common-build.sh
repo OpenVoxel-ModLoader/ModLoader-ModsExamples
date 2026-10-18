@@ -7,7 +7,8 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 GAME="${OPENVOXEL_GAME_JAR:-}"
 for c in "$ROOT/../../../Game/versions/0.0.8-Debug/openvoxel-0.0.8-Debug.jar" "$ROOT/../ModLoader-Client/game/openvoxel.jar"; do [ -z "$GAME" ] && [ -f "$c" ] && GAME="$c"; done
 [ -n "$GAME" ] || { echo "Game JAR not found; set OPENVOXEL_GAME_JAR." >&2; exit 1; }
-LOADER="${OPENVOXEL_MODLOADER_JAR:-$ROOT/../ModLoader-Client/dist/ModLoader-v1.0.0-vgame-0.0.8-client.jar}"
+LOADER="${OPENVOXEL_MODLOADER_JAR:-}"
+if [ -z "$LOADER" ]; then for j in "$ROOT"/../ModLoader-Client/dist/ModLoader-v*-vgame-0.0.8-client.jar; do [ -f "$j" ] && LOADER="$j"; done; fi
 [ -f "$LOADER" ] || { echo "Loader JAR not found; set OPENVOXEL_MODLOADER_JAR or build ../ModLoader-Client." >&2; exit 1; }
 rm -rf "$MOD/build" && mkdir -p "$MOD/build" "$ROOT/dist"
 find "$MOD/src" -name '*.java' > "$MOD/build/sources.txt"
