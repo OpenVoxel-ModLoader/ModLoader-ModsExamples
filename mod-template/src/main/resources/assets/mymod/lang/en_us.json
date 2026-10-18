@@ -1,4 +1,5 @@
 {
   "mymod.hello": "&aHello from My Mod, %s!",
-  "mymod.command": "greets you (My Mod)"
+  "mymod.command": "greets you (My Mod)",
+  "block.mymod.example_block": "Example Block"
 }

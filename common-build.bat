@@ -19,7 +19,8 @@ dir /s /b "%MOD%\src\*.java" > "%MOD%\build\sources.txt"
 javac --release 11 -encoding UTF-8 -Xlint:-options -classpath "%GAME%;%LOADER%" -d "%MOD%\build" @"%MOD%\build\sources.txt"
 if errorlevel 1 exit /b 1
 del "%MOD%\build\sources.txt"
-xcopy /e /i /y /q "%MOD%\resources" "%MOD%\build" >nul
+if exist "%MOD%\resources" xcopy /e /i /y /q "%MOD%\resources" "%MOD%\build" >nul
+if exist "%MOD%\src\main\resources" xcopy /e /i /y /q "%MOD%\src\main\resources" "%MOD%\build" >nul
 jar --create --file "%ROOT%\dist\%JARNAME%" -C "%MOD%\build" .
 if errorlevel 1 exit /b 1
 if exist "%ROOT%\..\ModLoader-Client\instance\mods" copy /y "%ROOT%\dist\%JARNAME%" "%ROOT%\..\ModLoader-Client\instance\mods\" >nul
